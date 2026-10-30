@@ -1,6 +1,6 @@
 # RasKota
 
-RasKota is a responsive TanStack Start + Vite application for the existing RasKota ordering demo.
+RasKota is a responsive TanStack Start + React application for the RasKota food-truck ordering demo.
 
 ## Stack
 
@@ -26,13 +26,15 @@ npm run build
 npm run preview
 ```
 
-The build runs the Vite/TanStack production build and a TypeScript check. GitHub Actions runs the same build for pushes and pull requests.
+The production build runs the Vite/TanStack build and a TypeScript check. GitHub Actions runs the same build for pushes and pull requests.
 
-## Existing demo compatibility
+## Demo behaviour and integration boundaries
 
-The original interactive demo is preserved at `public/legacy/raskota-demo.html` and mounted in the TanStack route as a same-origin, full-viewport client surface. This keeps the existing Customer, Kitchen, and Owner views, ordering builder, cart, order tracking, kitchen ticket actions, loyalty UI, and dashboard behaviour unchanged while the application moves to a modern server-rendered React/Vite host.
+The Customer, Kitchen, and Owner views are now rendered by React components. The original layout, typography, colours, responsive breakpoints, menu, extras, sample-data seed, ordering flow, cart, delivery/pickup options, order tracking, kitchen ticket transitions, loyalty display, and dashboard interactions have been retained.
 
-The demo itself is intentionally still client-side and uses in-memory sample data. Its PayFast screen is explicitly simulated: it does not submit payments, persist orders, or connect to a payment account. Production payments, authentication, durable order storage, notifications, and a native React component extraction are separate implementation stages.
+The original HTML prototype is archived at `public/legacy/raskota-demo.html` for reference; the application route no longer embeds it.
+
+The demo uses client-side in-memory sample data. Orders do not persist across reloads. Its PayFast screen is a non-transactional simulation and is not connected to a live payment account. Production authentication, persistent order storage, real payment processing, notifications, and inventory integrations are separate implementation stages.
 
 ## Deployment
 
