@@ -583,6 +583,7 @@ function OwnerView({
 }
 
 export function RasKotaApp() {
+  const [hydrated, setHydrated] = useState(false)
   const [seed] = useState(() => createDemoSeed())
   const [orders, setOrders] = useState<Order[]>(seed.orders)
   const [seq, setSeq] = useState(seed.nextSeq)
@@ -611,6 +612,7 @@ export function RasKotaApp() {
   const [clock, setClock] = useState(Date.now())
 
   useEffect(() => {
+    setHydrated(true)
     const updateView = () => setView(currentView())
     updateView()
     window.addEventListener('hashchange', updateView)
@@ -630,6 +632,15 @@ export function RasKotaApp() {
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [modal])
+
+  if (!hydrated) {
+    return (
+      <div className="app-loading" aria-label="Loading RasKota">
+        <div className="loader-mark">RK</div>
+        <span>Loading RasKota…</span>
+      </div>
+    )
+  }
 
   const notify = (title: string, body: string) => {
     const id = Date.now() + Math.floor(Math.random() * 10000)
