@@ -222,3 +222,33 @@ textarea{resize:vertical;min-height:70px}
 .roadmap b{font-family:var(--label);font-size:15px;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:4px;color:var(--amber)}
 .roadmap ul{margin:0;padding-left:17px;display:flex;flex-direction:column;gap:3px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.app-loading {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--ink);
+  color: var(--muted);
+  font-family: var(--label);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.loader-mark {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: var(--amber);
+  color: #160d00;
+  font-family: var(--display);
+  font-size: 22px;
+  box-shadow: 0 0 34px rgb(247 168 27 / 18%);
+}
